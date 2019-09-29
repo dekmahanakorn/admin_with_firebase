@@ -1,0 +1,308 @@
+<div class="row">
+    <div class="col-12">
+        <h4 class="d-inline">Center UI</h4>
+        <!-- Row -->
+        <div class="row">
+            <!-- column -->
+            <div class="col-lg-3 col-md-6">
+                <!-- Card -->
+                <div class="card" *ngFor="let data of C1">
+                    <img class="card-img-top img-responsive" [src]="data.imageUrl" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Content of Center 1</h4>
+                        <p class="card-text">Click update your content of Center 1.</p>
+
+                        <div>
+                            <label>title en: </label>{{data.title_en}}
+                        </div>
+                        <div>
+                            <label>des en: </label>{{data.description_en}}
+                        </div>
+                        <div>
+                            <label>title th: </label>{{data.title_th}}
+                        </div>
+                        <div>
+                            <label>des th: </label>{{data.description_th}}
+                        </div>
+
+                        <!--- ------------------Modal with date picker (NgbdModalBasicComponent)---------------------->
+                        <ng-template #content1 let-modal>
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-basic-title">Content of Main Center 1 update</h4>
+                                <button type="button" class="close" aria-label="Close"
+                                    (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form (ngSubmit)="onSubmitC1(form)" #form="ngForm">
+                                    <table class='table'>
+                                        <thead>
+                                            <tr>
+                                                <td>Image</td>
+                                                <td>English</td>
+                                                <td>Thai</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <form [formGroup]="formTemplate"
+                                                        (submit)="onSubmitC1UploadImage(formTemplate.value)">
+                                                        <img class="card-img-top img-responsive" style="width: 100%"
+                                                            [src]="imgSrc" (click)="fileUploader.click()"><br><br>
+
+                                                        <input type="file" accept="image/*" class="form-control"
+                                                            #fileUploader formControlName="imageUrl"
+                                                            (change)="showPreview($event)"><br>
+                                                        <div class="text-danger"
+                                                            *ngIf="isSubmitted && formControls.imageUrl.errors?.required">
+                                                            This field is required.
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-outline-success">
+                                                                upload
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="title"
+                                                        name="title_en" ngModel>
+                                                    <br><br>
+                                                    <textarea rows="8" cols="30" name="description_en"
+                                                        class="form-control" placeholder="description"
+                                                        ngModel></textarea>
+                                                </td>
+
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="title"
+                                                        name="title_th" ngModel>
+                                                    <br><br>
+                                                    <textarea rows="8" cols="30" name="description_th"
+                                                        class="form-control" placeholder="description"
+                                                        ngModel></textarea>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-outline-success"> save
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </ng-template>
+                        <button class="btn btn-lg btn-outline-primary" (click)="open1(content1)">update</button>
+                        <!--- ------------------Modal with date picker (NgbdModalBasicComponent)---------------------->
+                    </div>
+
+                </div>
+                <!-- Card -->
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-3 col-md-6">
+                <!-- Card -->
+                <div class="card" *ngFor="let data of C2">
+                    <img class="card-img-top img-responsive" [src]="data.imageUrl" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Content of Center 2</h4>
+                        <p class="card-text">Click update your content of Center 2.</p>
+
+                        <div>
+                            <label>title en: </label>{{data.title_en}}
+                        </div>
+                        <div>
+                            <label>des en: </label>{{data.description_en}}
+                        </div>
+                        <div>
+                            <label>title th: </label>{{data.title_th}}
+                        </div>
+                        <div>
+                            <label>des th: </label>{{data.description_th}}
+                        </div>
+
+                        <!--- ------------------Modal with date picker (NgbdModalBasicComponent)---------------------->
+                        <ng-template #content2 let-modal>
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-basic-title">Content of Center 2 update</h4>
+                                <button type="button" class="close" aria-label="Close"
+                                    (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form (ngSubmit)="onSubmitC2(form)" #form="ngForm">
+                                    <table class='table'>
+                                        <thead>
+                                            <tr>
+                                                <td>Image</td>
+                                                <td>English</td>
+                                                <td>Thai</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <form [formGroup]="formTemplate"
+                                                        (submit)="onSubmitC2UploadImage(formTemplate.value)">
+                                                        <img class="card-img-top img-responsive" style="width: 100%"
+                                                            [src]="imgSrc" (click)="fileUploader.click()"><br><br>
+
+                                                        <input type="file" accept="image/*" class="form-control"
+                                                            #fileUploader formControlName="imageUrl"
+                                                            (change)="showPreview($event)"><br>
+                                                        <div class="text-danger"
+                                                            *ngIf="isSubmitted && formControls.imageUrl.errors?.required">
+                                                            This field is required.
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-outline-success">
+                                                                upload
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="title"
+                                                        name="title_en" ngModel>
+                                                    <br><br>
+                                                    <textarea rows="8" cols="30" name="description_en"
+                                                        class="form-control" placeholder="description"
+                                                        ngModel></textarea>
+                                                </td>
+
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="title"
+                                                        name="title_th" ngModel>
+                                                    <br><br>
+                                                    <textarea rows="8" cols="30" name="description_th"
+                                                        class="form-control" placeholder="description"
+                                                        ngModel></textarea>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-outline-success"> save </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </ng-template>
+
+                        <button class="btn btn-lg btn-outline-primary" (click)="open2(content2)">update</button>
+                        <!--- ------------------Modal with date picker (NgbdModalBasicComponent)---------------------->
+                    </div>
+                </div>
+                <!-- Card -->
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-3 col-md-6">
+                <!-- Card -->
+                <div class="card" *ngFor="let data of C3">
+                    <img class="card-img-top img-responsive" [src]="data.imageUrl" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Content of Center 3</h4>
+                        <p class="card-text">Click update your content of Center 3.</p>
+
+                        <div>
+                            <label>title en: </label>{{data.title_en}}
+                        </div>
+                        <div>
+                            <label>des en: </label>{{data.description_en}}
+                        </div>
+                        <div>
+                            <label>title th: </label>{{data.title_th}}
+                        </div>
+                        <div>
+                            <label>des th: </label>{{data.description_th}}
+                        </div>
+                        <!--- ------------------Modal with date picker (NgbdModalBasicComponent)---------------------->
+                        <ng-template #content3 let-modal>
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-basic-title">Content of Center 3 update</h4>
+                                <button type="button" class="close" aria-label="Close"
+                                    (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form (ngSubmit)="onSubmitC3(form)" #form="ngForm">
+                                    <table class='table'>
+                                        <thead>
+                                            <tr>
+                                                <td>Image</td>
+                                                <td>English</td>
+                                                <td>Thai</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <form [formGroup]="formTemplate"
+                                                        (submit)="onSubmitC3UploadImage(formTemplate.value)">
+                                                        <img class="card-img-top img-responsive" style="width: 100%"
+                                                            [src]="imgSrc" (click)="fileUploader.click()"><br><br>
+
+                                                        <input type="file" accept="image/*" class="form-control"
+                                                            #fileUploader formControlName="imageUrl"
+                                                            (change)="showPreview($event)"><br>
+                                                        <div class="text-danger"
+                                                            *ngIf="isSubmitted && formControls.imageUrl.errors?.required">
+                                                            This field is required.
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-outline-success">
+                                                                upload
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="title"
+                                                        name="title_en" ngModel>
+                                                    <br><br>
+                                                    <textarea rows="8" cols="30" name="description_en"
+                                                        class="form-control" placeholder="description"
+                                                        ngModel></textarea>
+                                                </td>
+
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="title"
+                                                        name="title_th" ngModel>
+                                                    <br><br>
+                                                    <textarea rows="8" cols="30" name="description_th"
+                                                        class="form-control" placeholder="description"
+                                                        ngModel></textarea>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-outline-success"> save </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </ng-template>
+
+                        <button class="btn btn-lg btn-outline-primary" (click)="open3(content3)">update</button>
+                        <!--- ------------------Modal with date picker (NgbdModalBasicComponent)---------------------->
+                    </div>
+
+                </div>
+                <!-- Card -->
+            </div>
+            <!-- column -->
+        </div>
+        <!-- Row -->
+    </div>
+</div>
+<!-- End Row -->

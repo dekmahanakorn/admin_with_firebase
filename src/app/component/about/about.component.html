@@ -1,0 +1,105 @@
+<div class="row">
+    <div class="col-12">
+        <h4 class="d-inline">About</h4>
+        <!-- Row -->
+        <div class="row">
+            <!-- column -->
+            <div class="col-lg-3 col-md-6">
+                <!-- Card -->
+                <div class="card" *ngFor="let data of about">
+                    <img class="card-img-top img-responsive" [src]="data.imageUrl" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Content of About</h4>
+                        <p class="card-text">Click update your content of About</p>
+
+                        <div>
+                            <label>Company: </label>{{data.company}}
+                        </div>
+                        <div>
+                            <label>Address: </label>{{data.address}}
+                        </div>
+                        <div>
+                            <label>Address 2: </label>{{data.address}}
+                        </div>
+                        <div>
+                            <label>Tel: </label>{{data.tel}}
+                        </div>
+
+                        <!--- ------------------Modal with date picker (NgbdModalBasicComponent)---------------------->
+                        <ng-template #content1 let-modal>
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-basic-title">Content of Main About</h4>
+                                <button type="button" class="close" aria-label="Close"
+                                    (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form (ngSubmit)="onSubmitAbout(form)" #form="ngForm">
+                                    <table class='table'>
+                                        <thead>
+                                            <tr>
+                                                <td>Image</td>
+                                                <td>Content</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <form [formGroup]="formTemplate"
+                                                        (submit)="onSubmitAboutUploadImage(formTemplate.value)">
+                                                        <img class="card-img-top img-responsive" style="width: 100%"
+                                                            [src]="imgSrc" (click)="fileUploader.click()"><br><br>
+
+                                                        <input type="file" accept="image/*" class="form-control"
+                                                            #fileUploader formControlName="imageUrl"
+                                                            (change)="showPreview($event)"><br>
+                                                        <div class="text-danger"
+                                                            *ngIf="isSubmitted && formControls.imageUrl.errors?.required">
+                                                            This field is required.
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-outline-success">
+                                                                upload
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="company"
+                                                        name="company" ngModel>
+                                                    <br><br>
+                                                    <input type="text" class="form-control" placeholder="address"
+                                                        name="address" ngModel>
+                                                    <br><br>
+                                                    <input type="text" class="form-control" placeholder="address 2"
+                                                        name="address2" ngModel>
+                                                    <br><br>
+                                                    <input type="text" class="form-control" placeholder="tel" name="tel"
+                                                        ngModel>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-outline-success"> save
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </ng-template>
+                        <button class="btn btn-lg btn-outline-primary" (click)="open1(content1)">update</button>
+                        <!--- ------------------Modal with date picker (NgbdModalBasicComponent)---------------------->
+                    </div>
+
+                </div>
+                <!-- Card -->
+            </div>
+            <!-- column -->
+        </div>
+        <!-- Row -->
+    </div>
+</div>
+<!-- End Row -->

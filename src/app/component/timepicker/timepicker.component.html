@@ -1,0 +1,141 @@
+<div class="row">
+    <div class="col-12">
+        <h4 class="d-inline">Visa application</h4>
+        <!-- Row -->
+        <div class="row">
+            <!-- column -->
+            <div class="col-lg-3 col-md-6">
+                <!-- Card -->
+                <div class="card" *ngFor="let data of visa">
+                    <img class="card-img-top img-responsive" [src]="data.imageUrl" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Content of Visa application</h4>
+                        <p class="card-text">Click update your content of Visa application.</p>
+
+                        <div>
+                            <label>validity en: </label>{{data.validity}}
+                        </div>
+                        <div>
+                            <label>fee en: </label>{{data.fee}}
+                        </div>
+                        <div>
+                            <label>annual_fees en: </label>{{data.annual_fees}}
+                        </div>
+                        <div>
+                            <label>des en: </label>{{data.description}}
+                        </div>
+                        <div>
+                            <label>validity th: </label>{{data.validity_th}}
+                        </div>
+                        <div>
+                            <label>fee th: </label>{{data.fee_th}}
+                        </div>
+                        <div>
+                            <label>annual_fees th: </label>{{data.annual_fees_th}}
+                        </div>
+                        <div>
+                            <label>age_requirement th: </label>{{data.age_requirement_th}}
+                        </div>
+                        <div>
+                            <label>description th: </label>{{data.description_th}}
+                        </div>
+                        <!--- ------------------Modal with date picker (NgbdModalBasicComponent)---------------------->
+                        <ng-template #content1 let-modal>
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-basic-title">Content of Main Visa application</h4>
+                                <button type="button" class="close" aria-label="Close"
+                                    (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form (ngSubmit)="onSubmitVisa(form)" #form="ngForm">
+                                    <table class='table'>
+                                        <thead>
+                                            <tr>
+                                                <td>Image</td>
+                                                <td>English</td>
+                                                <td>Thai</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <form [formGroup]="formTemplate"
+                                                        (submit)="onSubmitVisaUploadImage(formTemplate.value)">
+                                                        <img class="card-img-top img-responsive" style="width: 100%"
+                                                            [src]="imgSrc" (click)="fileUploader.click()"><br><br>
+
+                                                        <input type="file" accept="image/*" class="form-control"
+                                                            #fileUploader formControlName="imageUrl"
+                                                            (change)="showPreview($event)"><br>
+                                                        <div class="text-danger"
+                                                            *ngIf="isSubmitted && formControls.imageUrl.errors?.required">
+                                                            This field is required.
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-outline-success">
+                                                                upload
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="validity"
+                                                        name="validity" ngModel>
+                                                    <br><br>
+                                                    <input type="text" class="form-control" placeholder="fee" name="fee"
+                                                        ngModel>
+                                                    <br><br>
+                                                    <input type="text" class="form-control" placeholder="annual_fees"
+                                                        name="annual_fees" ngModel>
+                                                    <br><br>
+                                                    <input type="text" class="form-control"
+                                                        placeholder="age_requirement" name="age_requirement" ngModel>
+                                                    <br><br>
+                                                    <textarea rows="8" cols="30" name="description" class="form-control"
+                                                        placeholder="description" ngModel></textarea>
+                                                </td>
+
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="validity"
+                                                        name="validity_th" ngModel>
+                                                    <br><br>
+                                                    <input type="text" class="form-control" placeholder="fee"
+                                                        name="fee_th" ngModel>
+                                                    <br><br>
+                                                    <input type="text" class="form-control" placeholder="annual_fees"
+                                                        name="annual_fees_th" ngModel>
+                                                    <br><br>
+                                                    <input type="text" class="form-control"
+                                                        placeholder="age_requirement" name="age_requirement_th" ngModel>
+                                                    <br><br>
+                                                    <textarea rows="8" cols="30" name="description_th"
+                                                        class="form-control" placeholder="description"
+                                                        ngModel></textarea>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-outline-success"> save
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </ng-template>
+                        <button class="btn btn-lg btn-outline-primary" (click)="open1(content1)">update</button>
+                        <!--- ------------------Modal with date picker (NgbdModalBasicComponent)---------------------->
+                    </div>
+
+                </div>
+                <!-- Card -->
+            </div>
+            <!-- column -->
+        </div>
+        <!-- Row -->
+    </div>
+</div>
+<!-- End Row -->

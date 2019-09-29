@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-12">
+    <!-- Row -->
+    <div class="row">
+      <!-- column -->
+      <div class="col-md-6">
+        <h2>Youtube view 1</h2>
+        <!-- Card -->
+        <div class="card" *ngFor="let data of youtubeR">
+          <youtube-player [videoId]="id_R" (ready)="savePlayerR($event)" (change)="onStateChange($event)"></youtube-player>
+          <div class="card-body">
+
+            <div>
+              <label>{{data.url}}</label>
+            </div>
+
+            <form (ngSubmit)="onSubmitYoutubeR(form)" #form="ngForm" [formGroup]="formTemplate">
+              <input type="text" class="form-control" placeholder="youtube video url" name="url" formControlName="url">
+              <div class="text-danger" *ngIf="isSubmitted && formControls.url.errors?.required">
+                This field is required.
+              </div><br><br>
+              <button type="submit" class="btn btn-lg btn-outline-primary">save</button>
+            </form>
+
+          </div>
+          <!-- Card -->
+          <h2>Youtube view 2</h2>
+           <!-- Card -->
+        <div class="card" *ngFor="let data of youtube">
+          <youtube-player [videoId]="id" (ready)="savePlayer($event)" (change)="onStateChange($event)"></youtube-player>
+          <div class="card-body">
+
+            <div>
+              <label>{{data.url}}</label>
+            </div>
+
+            <form (ngSubmit)="onSubmitYoutube(form)" #form="ngForm" [formGroup]="formTemplate">
+              <input type="text" class="form-control" placeholder="youtube video url" name="url" formControlName="url">
+              <div class="text-danger" *ngIf="isSubmitted && formControls.url.errors?.required">
+                This field is required.
+              </div><br><br>
+              <button type="submit" class="btn btn-lg btn-outline-primary">save</button>
+            </form>
+
+          </div>
+          <!-- Card -->
+          <h2>Youtube view 3</h2>
+           <!-- Card -->
+        <div class="card" *ngFor="let data of youtubeL">
+          <youtube-player [videoId]="id_L" (ready)="savePlayerL($event)" (change)="onStateChange($event)"></youtube-player>
+          <div class="card-body">
+
+            <div>
+              <label>{{data.url}}</label>
+            </div>
+
+            <form (ngSubmit)="onSubmitYoutubeL(form)" #form="ngForm" [formGroup]="formTemplate">
+              <input type="text" class="form-control" placeholder="youtube video url" name="url" formControlName="url">
+              <div class="text-danger" *ngIf="isSubmitted && formControls.url.errors?.required">
+                This field is required.
+              </div><br><br>
+              <button type="submit" class="btn btn-lg btn-outline-primary">save</button>
+            </form>
+
+          </div>
+          <!-- Card -->
+        </div>
+      </div>
+      <!-- Row -->
+    </div>
+  </div>
+  <!-- End Row -->

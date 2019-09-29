@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "pornatisp"
+  },
+  "targets": {
+    "pornatisp": {
+      "hosting": {
+        "app": [
+          "adminpornatisp"
+        ]
+      }
+    }
+  }
+}

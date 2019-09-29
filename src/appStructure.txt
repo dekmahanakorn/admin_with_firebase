@@ -1,0 +1,28 @@
+● src
++---● app
+|   +--● component
+|   |  |--component.module.ts|.routing.ts
+|   |  +--● about
+|   |  |  |--about.component.ts|.html|.service.ts  
+|   |  |
+|   |  +--● about2
+|   |  |  |--about2.component.ts|.html|.service.ts  
+|   |  |
+|   |  +--● about3
+|   |     |--about3.component.ts|.html|.service.ts  
+|   |  |
+|   |  +--● shared
+|   |     |--ui.service.ts
+|   |     |--ui.model.ts
+|   |
+|   |--app.module.ts (configured firebase connection)
+|
++---● environments  
+|   |--environment.ts (saved firebase connection details)
+|   |
++---● translate  
+|   |--messages.en.xlf (english Language)
+|   |
+|   |--messages.th.xlf (thailand Language)
+|
+|--index.html (cdn path for bootstrap and font awesome icon)
