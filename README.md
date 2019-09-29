@@ -1,4 +1,4 @@
-##Step by Step
+## Step by Step
 Set up the Firebase Project & Install @angular/fire
 Please visit this post to know step by step.
 
@@ -16,14 +16,14 @@ export const environment = {
     messagingSenderId: '123'
   }
 };
-##Create Service & Components
+## Create Service & Components
 Run the commands below:
 – ng g s customers/Customer
 – ng g c customers/CustomerDetails
 – ng g c customers/CustomersList
 – ng g c customers/CreateCustomer
 
-##Setup @NgModule
+## Setup @NgModule
 app.module.ts
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -58,7 +58,7 @@ import { CreateCustomerComponent } from './customers/create-customer/create-cust
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-Create Model Class
+## Create Model Class
 customer.ts
 
 export class Customer {
@@ -69,7 +69,7 @@ export class Customer {
 }
 The key field is important for updating item.
 
-##Create Data Service
+## Create Data Service
 customer.service.ts
 
 import { Injectable } from '@angular/core';
@@ -109,7 +109,8 @@ export class CustomerService {
     return this.customersRef.remove();
   }
 }
-##Create Component for item Details
+  
+## Create Component for item Details
 customer-details.component.ts
 
 import { Component, OnInit, Input } from '@angular/core';
@@ -164,7 +165,7 @@ customer-details.component.html
  
   <hr/>
 </div>
-##Create Component to show List of Items
+## Create Component to show List of Items
 customers-list.component.ts
 
 import { Component, OnInit } from '@angular/core';
@@ -216,7 +217,7 @@ customers-list.component.html:
 </div>
 We pass each customer item data to customer-details component.
 
-##Create Component to save item
+## Create Component to save item
 create-customer.component.ts
 
 import { Component, OnInit } from '@angular/core';
@@ -279,7 +280,7 @@ create-customer.component.html:
   <h4>You submitted successfully!</h4>
   <button class="btn btn-success" (click)="newCustomer()">Add</button>
 </div>
-##Define App Routing Module
+## Define App Routing Module
 app-routing.module.ts
 
 import { CreateCustomerComponent } from './customers/create-customer/create-customer.component';
